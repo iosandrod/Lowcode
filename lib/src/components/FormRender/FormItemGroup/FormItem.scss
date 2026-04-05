@@ -1,0 +1,19 @@
+@import '@/style';
+
+@include ns('form-item') {
+  &-label {
+    display: inline-flex;
+    position: relative;
+    white-space: nowrap;
+    gap: 3px;
+    align-items: center;
+
+    &-suffix {
+      margin-left: 3px;
+    }
+  }
+
+  .form-item-alert {
+    margin-top: 10px;
+  }
+}

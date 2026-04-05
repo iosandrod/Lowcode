@@ -1,11 +1,11 @@
-import Basic from './Basic/index.vue'
-import GlobalStyle from './GlobalStyle.vue'
-import InitialValues from './InitialValues.vue'
-import JsExpr from './JsExpr.vue'
-import Linkages from './Linkages/Linkages.vue'
-import Options from './Options/index.vue'
-import Rules from './Rules/Rules.vue'
-import StyleEditor from './StyleEditor/index.vue'
+import Basic from './Basic/index'
+import GlobalStyle from './GlobalStyle'
+import InitialValues from './InitialValues'
+import JsExpr from './JsExpr'
+import Linkages from './Linkages/Linkages'
+import Options from './Options/index'
+import Rules from './Rules/Rules'
+import StyleEditor from './StyleEditor/index'
 
 export default (app: any) => {
   app.component('FormDesign-InitialValues', InitialValues)

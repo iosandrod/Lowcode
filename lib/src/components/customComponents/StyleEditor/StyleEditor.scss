@@ -1,0 +1,24 @@
+@import '@/style';
+
+@include ns('style-editor') {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+
+  .el-divider__text {
+    font-weight: bold;
+    color: $textColor1;
+  }
+
+  .el-form-item {
+    margin-bottom: 16px;
+  }
+
+  .el-color-picker {
+    width: 100%;
+  }
+
+  .el-input-number {
+    width: 100%;
+  }
+}

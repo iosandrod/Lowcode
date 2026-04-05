@@ -1,0 +1,75 @@
+@import '@/style.scss';
+
+@include ns('margin-input') {
+  margin-bottom: 16px;
+  font-size: 12px;
+
+  .margin-input__unified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .margin-input__toggle {
+    padding: 4px;
+    min-width: auto;
+    height: auto;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .margin-input__label {
+    min-width: 84px;
+    color: $textColor1;
+    font-size: 12px;
+  }
+
+  .margin-input__unified-input {
+    flex: 1;
+  }
+
+  .margin-input__arrow {
+    transition: transform 0.2s ease;
+    transform: rotate(-90deg);
+  }
+
+  .margin-input__arrow.is-expanded {
+    transform: rotate(0);
+  }
+
+  .margin-input__details {
+    margin-top: 12px;
+    padding: 12px;
+    background: $bgColor3;
+    border-radius: 4px;
+  }
+
+  .margin-input__row {
+    display: flex;
+    gap: 12px;
+
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  .margin-input__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .margin-input__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: $textColor3;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,43 @@
+@import '@/style.scss';
+
+@include ns('unit-input') {
+  display: flex;
+  width: 100%;
+
+  .unit-input__preset-btn {
+    flex: 1;
+    width: 100%;
+    color: $themeColor;
+    border-color: $themeColor;
+    background: transparent;
+
+    &:hover {
+      color: $themeColor;
+      border-color: $themeColor;
+      background: rgba($themeColor, 0.1);
+    }
+  }
+
+  .unit-input__unit-mode {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .unit-input__number {
+    flex: 1;
+  }
+
+  .unit-input__unit-btn {
+    min-width: 48px;
+    color: $themeColor;
+    border-color: $themeColor;
+    background: transparent;
+
+    &:hover {
+      color: $themeColor;
+      border-color: $themeColor;
+      background: rgba($themeColor, 0.1);
+    }
+  }
+}
