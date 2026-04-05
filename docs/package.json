@@ -1,0 +1,21 @@
+{
+  "name": "@vue-form-craft/docs",
+  "version": "4.6.0",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "devDependencies": {
+    "@arco-design/web-vue": "^2.56.2",
+    "axios": "^1.6.2",
+    "postcss": "^8.4.47",
+    "vitepress": "^1.2.3",
+    "vitepress-vue-demo": "^1.0.10"
+  },
+  "dependencies": {
+    "md-editor-v3": "^6.3.1"
+  }
+}
