@@ -1,0 +1,77 @@
+@import '@/style';
+
+@include ns('form-design-left') {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+
+  .sidebar {
+    height: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-right: 1px solid $borderColor;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .item {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 20px;
+
+      &:hover {
+        background-color: $bgColorLight;
+      }
+    }
+
+    .item.active {
+      color: $themeColor;
+      background-color: $bgColorLight;
+    }
+  }
+
+  .content {
+    width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-right: 1px solid $borderColor;
+
+    .topbar {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $borderColor;
+
+      .desc {
+        font-size: 12px;
+        color: #999;
+      }
+
+      .close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+          color: $themeColor;
+        }
+      }
+    }
+
+    .render {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  }
+}

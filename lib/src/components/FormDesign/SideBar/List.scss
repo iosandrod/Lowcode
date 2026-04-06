@@ -1,0 +1,70 @@
+@import '@/style';
+
+@include ns('components') {
+  .responsive-input {
+    margin-bottom: 10px;
+  }
+}
+
+@include ns('search-result') {
+  padding: 10px 0;
+}
+
+@include ns('no-result') {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 14px;
+}
+
+@include ns('menu') {
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    // padding: 5px;
+    box-sizing: border-box;
+
+    &-title {
+      font-size: 12px;
+      margin: 15px 0px 10px;
+      color: #999;
+    }
+
+    &-ghost,
+    &-fallback,
+    &-drag {
+      list-style: none;
+    }
+
+    @media screen and (max-width: 1300px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 800px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    &-item {
+      list-style: none;
+      padding: 5px 0px;
+      border-radius: 5px;
+      cursor: move;
+      border: 1px dashed transparent;
+      transition: 0.3s all;
+      &:hover {
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+        color: $themeColor;
+      }
+      background-color: $lightThemeColor;
+      text-align: center;
+      &-ico {
+        font-size: 20px;
+      }
+      &-name {
+        font-size: 13px;
+      }
+    }
+  }
+}
