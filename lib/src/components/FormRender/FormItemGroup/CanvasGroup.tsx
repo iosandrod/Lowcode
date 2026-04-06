@@ -41,13 +41,10 @@ export default defineComponent({
     const onAdd = (e: Record<string, any>) => {
       const source = e.item._underlying_vm_
 
-      designInstance.setSchema()
-
+      // SortableJS模式：vuedraggable 已经直接修改了 list.value (即 schema.items)
+      // 所以不需要再调用 addItem，只需要设置当前选中和发送事件
       designInstance.setCurrentKey(source.designKey)
-
       designInstance.handleEmit('add', source)
-
-      designInstance.recordHistory('拖拽组件')
     }
 
     const onUpdate = () => {
@@ -78,7 +75,6 @@ export default defineComponent({
           style={props.style}
           animation={300}
           handle=".move-btn"
-          forceFallback
           scroll={scrollContainer.value}
           scrollSensitivity={100}
           scrollSpeed={20}
