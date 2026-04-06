@@ -7,6 +7,7 @@ import {
   reactive,
   ref,
   useTemplateRef,
+  defineEmits,
   watch
 } from 'vue'
 import { $designInstance } from '@/symbol'
@@ -223,12 +224,14 @@ export default defineComponent({
       setNodeByKey,
       addItem
     }
-    const emits = defineEmits(['update:modelValue', 'change', 'finish', 'failed', 'reset', 'fieldChange'])
+    // const emits = defineEmits(['update:modelValue', 'change', 'finish', 'failed', 'reset', 'fieldChange'])
     const _instance = new DesignInstanceImpl({
       props,
-      emits
-    })
-    provide($designInstance, instance)
+      //@ts-ignore
+      emits: emit
+    })//
+    // provide($designInstance, instance)
+    provide($designInstance, _instance)//
 
     expose(instance)
 
