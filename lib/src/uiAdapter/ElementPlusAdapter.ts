@@ -181,17 +181,17 @@ const ElementPlusAdapter: UIAdapter = {
           attrs,
           propsAttrs.options
             ? {
-              default: () =>
-                propsAttrs.options.map((option: any) =>
-                  h(ElOption, {
-                    key: option.value,
-                    label: option.label,
-                    value: option.value,
-                    disabled: option.disabled
-                  })
-                ),
-              ...slots
-            }
+                default: () =>
+                  propsAttrs.options.map((option: any) =>
+                    h(ElOption, {
+                      key: option.value,
+                      label: option.label,
+                      value: option.value,
+                      disabled: option.disabled
+                    })
+                  ),
+                ...slots
+              }
             : slots
         )
     },
@@ -262,6 +262,14 @@ const ElementPlusAdapter: UIAdapter = {
           ElDialog,
           {
             ...attrs,
+            // visible prop 需要映射到 modelValue 以支持 v-model
+            modelValue: propsAttrs.visible,
+            'onUpdate:modelValue': (val: boolean) => {
+              // 触发 update:visible 事件以支持 v-model 双向绑定
+              if (propsAttrs['onUpdate:visible']) {
+                propsAttrs['onUpdate:visible'](val)
+              }
+            },
             // to 参数映射到 ElDialog 的 appendTo
             appendTo: document.querySelector(propsAttrs.to) || 'body'
           },
