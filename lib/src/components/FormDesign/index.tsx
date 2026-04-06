@@ -20,7 +20,8 @@ import type {
 } from '@/types'
 import { ns, repirJsonSchema } from '@/utils'
 import Main from './Main/index'
-import { default as SideBar } from './SideBar/index.vue'
+import { default as SideBar } from './SideBar/index'
+import { DesignInstance as DesignInstanceImpl } from '../Model/DesignInstance'
 
 let initJsonSchema: FormSchema = {}
 
@@ -72,7 +73,7 @@ export default defineComponent({
     }
 
     const setHoverKey = (key: string) => {
-      hoverKey.value = key
+      hoverKey.value = key//
     }
 
     const setHistoryIndex = (index: number) => {
@@ -222,7 +223,11 @@ export default defineComponent({
       setNodeByKey,
       addItem
     }
-
+    const emits = defineEmits(['update:modelValue', 'change', 'finish', 'failed', 'reset', 'fieldChange'])
+    const _instance = new DesignInstanceImpl({
+      props,
+      emits
+    })
     provide($designInstance, instance)
 
     expose(instance)
