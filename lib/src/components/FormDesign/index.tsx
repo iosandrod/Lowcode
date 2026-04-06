@@ -19,9 +19,8 @@ import type {
   TemplateData
 } from '@/types'
 import { ns, repirJsonSchema } from '@/utils'
-import Main from './Main/index.tsx'
-import SideBar from './SideBar/index.vue'
-import './index.scss'
+import Main from './Main/index'
+import { default as SideBar } from './SideBar/index.vue'
 
 let initJsonSchema: FormSchema = {}
 
@@ -229,7 +228,7 @@ export default defineComponent({
     expose(instance)
 
     return () => (
-      <div class={ns('form-design')} {...attrs}>
+      <div style={{ display: 'flex' }} class={ns('form-design')} {...attrs}>
         <SideBar />
         <Main />
       </div>

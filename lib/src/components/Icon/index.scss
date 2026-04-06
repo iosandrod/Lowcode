@@ -1,0 +1,16 @@
+@import '@/style';
+
+// Apply icon sizing directly to the SVG element (not wrapper)
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  fill: currentColor;
+}
+
+@include ns('icon-render') {
+  display: inline-block;
+  // Don't constrain dimensions — let child SVG size itself via .icon class
+  vertical-align: middle;
+}

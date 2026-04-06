@@ -1,0 +1,6 @@
+@import '@/style';
+
+@include ns('tree') {
+  position: relative;
+  overflow: hidden;
+}
