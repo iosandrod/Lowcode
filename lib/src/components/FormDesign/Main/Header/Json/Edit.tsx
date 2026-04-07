@@ -4,6 +4,7 @@ import { useUI } from '@/hooks'
 import type { FormSchema } from '@/types'
 import { ns, removeDesignKeys } from '@/utils'
 import './Edit.scss'
+import { VueMonacoEditor } from '@guolao/vue-monaco-editor'
 
 export default defineComponent({
   name: 'JsonSchemaEdit',
@@ -15,9 +16,13 @@ export default defineComponent({
   },
   emits: ['save'],
   setup(props, { emit }) {
-    const { Button, Message } = useUI()
-    const jsonString = ref('')
-
+    let { Button, Message } = useUI()
+    let jsonString = ref('')
+    try {
+      jsonString.value= JSON.stringify(props.json, null, 2)//      
+    } catch (error) {
+      
+    }
     const editorOptions = {
       automaticLayout: true,
       formatOnType: true,

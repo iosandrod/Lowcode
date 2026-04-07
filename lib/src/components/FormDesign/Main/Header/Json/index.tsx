@@ -49,7 +49,7 @@ export default defineComponent({
                   <span>在线编辑</span>
                 </>
               ),
-              children: () => <JsonSchemaEdit json={json.value} onSave={onSave} />
+              default: () => <JsonSchemaEdit json={json.value} onSave={onSave} />
             }}
           </TabPane>
           <TabPane name="ts" lazy>
@@ -60,7 +60,7 @@ export default defineComponent({
                   <span>生成TS文件</span>
                 </>
               ),
-              children: () => (
+              default: () => (
                 <CodeHighLight
                   style={{ height: '70vh' }}
                   language="ts"
@@ -77,7 +77,7 @@ export default defineComponent({
                   <span>生成JS文件</span>
                 </>
               ),
-              children: () => (
+              default: () => (
                 <CodeHighLight
                   style={{ height: '70vh' }}
                   language="js"
@@ -94,7 +94,7 @@ export default defineComponent({
                   <span>生成TS组件</span>
                 </>
               ),
-              children: () => (
+              default: () => (
                 <CodeHighLight style={{ height: '70vh' }} language="vue" code={tsVue(json.value)} />
               )
             }}
@@ -107,7 +107,7 @@ export default defineComponent({
                   <span>生成JS组件</span>
                 </>
               ),
-              children: () => (
+              default: () => (
                 <CodeHighLight style={{ height: '70vh' }} language="vue" code={jsVue(json.value)} />
               )
             }}

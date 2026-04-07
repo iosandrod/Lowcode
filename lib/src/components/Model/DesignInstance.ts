@@ -10,7 +10,7 @@ interface DesignInstanceConfig {
     templates?: TemplateData
     omitMenus?: string[]
   }
-  emits: (event: string, ...args: any[]) => void
+  emits: Function
 }
 
 export class DesignInstance extends Base {
@@ -23,7 +23,6 @@ export class DesignInstance extends Base {
   historyIndex = -1
 
   constructor(config: DesignInstanceConfig) {
-    // debugger//
     super()
     this.props = config.props
     this.emits = config.emits
@@ -189,5 +188,11 @@ export class DesignInstance extends Base {
   // Debounced version for external use
   debouncedRecordHistory = debounce((description?: string) => {
     this.recordHistory(description)
-  }, 700)//
+  }, 700)
+  async validate(config?: {
+    field?: string,
+    fields?: string[],
+  }) {//
+
+  }
 }
