@@ -32,7 +32,7 @@ export default defineComponent({
       emit('update:currentKey', node[props.nodeKey])
       emit('node-click', node)
     }
-
+    // console.log(props.data, 'test_data1')//
     return () => (
       <div class={ns('tree')}>
         {props.data.map((node) => (
