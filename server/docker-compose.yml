@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # ============ API Gateway / Reverse Proxy ============
+  nginx:
+    image: nginx:alpine
+    ports:
+      - '3000:80'
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - api
+    networks:
+      - backend
+    restart: unless-stopped
+
+  # ============ API Service (Moleculer) ============
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    environment:
+      - NODE_ID=api-1
+      - NAMESPACE=production
+      - TRANSPORTER=redis://redis:6379
+      - CACHER=redis://redis:6379
+      - DATABASE_URL=postgresql://formcraft:password@postgres:5432/formcraft
+      - JWT_SECRET=${JWT_SECRET:-your-secret-key}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NODE_ENV=production
+      - LOG_LEVEL=warn
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - backend
+    restart: unless-stopped
+    deploy:
+      replicas: 2
+
+  # ============ PostgreSQL ============
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=formcraft
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=formcraft
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - backend
+    restart: unless-stopped
+    command: postgres -c max_connections=200
+
+  # ============ Redis ============
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    networks:
+      - backend
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  backend:
+    driver: bridge

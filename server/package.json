@@ -1,0 +1,36 @@
+{
+  "name": "vue-form-craft-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "db:connect": "tsx src/database/connect.ts",
+    "db:migrate": "tsx src/database/migrate-system.ts",
+    "db:migrate:tenant": "tsx src/database/migrate-tenant.ts",
+    "db:init": "pnpm db:migrate && pnpm db:migrate:tenant",
+    "build": "tsc",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "ioredis": "^5.10.1",
+    "jsonwebtoken": "^9.0.3",
+    "moleculer": "^0.14.35",
+    "moleculer-web": "^0.10.7",
+    "pg": "^8.20.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.10.0",
+    "@types/pg": "^8.11.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.3.0",
+    "vitest": "^2.1.5"
+  }
+}
